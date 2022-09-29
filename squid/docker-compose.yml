@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  squid-proxy:
+    image: ubuntu/squid:4.10-20.04_edge
+    mem_limit: 1024m
+    cpus: 1
+    restart: always
+    volumes:
+      - ./config/squid.conf:/etc/squid/squid.conf
+      - ./config/url_deny:/etc/squid/url_deny
+      - ./config/no_cache:/etc/squid/no_cache
+    expose:
+      - 3128
+    ports:
+      - 3128:3128
